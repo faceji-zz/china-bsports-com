@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>b体育 – 稳定入口与页面说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f6fa;
+            color: #1e2a3a;
+            line-height: 1.6;
+        }
+
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #0a1a2b 0%, #122b3e 60%, #1a3f55 100%);
+            color: #eef3f8;
+            padding: 3.5rem 1.5rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid #2c4e66;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            right: -20px;
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, rgba(141, 196, 235, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            max-width: 640px;
+            margin: 0 auto 0.5rem;
+            font-size: 1.1rem;
+            color: #c9dceb;
+            line-height: 1.7;
+        }
+
+        .hero .tagline {
+            display: inline-block;
+            margin-top: 0.8rem;
+            padding: 0.25rem 1.2rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 40px;
+            font-size: 0.85rem;
+            color: #b5d0e5;
+            background: rgba(255,255,255,0.04);
+        }
+
+        /* 主内容区 - 浅色背景 卡片式 */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1.2rem 3.5rem;
+        }
+
+        /* 卡片系统 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.8rem;
+            margin: 2.5rem 0;
+        }
+
+        @media (min-width: 620px) {
+            .card-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 920px) {
+            .card-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.6rem 2rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.02);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid rgba(220, 230, 245, 0.5);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 28px rgba(0, 26, 50, 0.08);
+            border-color: #b8d0e8;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: #102a3c;
+            letter-spacing: 0.3px;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .card h3 span {
+            background: #dce8f5;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            padding: 0.1rem 0.7rem;
+            color: #1a3f57;
+            font-weight: 500;
+            margin-left: 0.2rem;
+        }
+
+        .card p {
+            color: #2e4055;
+            font-size: 0.95rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .card .meta-dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: #3875a0;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            opacity: 0.7;
+        }
+
+        .card ul {
+            list-style: none;
+            margin-top: 0.5rem;
+        }
+
+        .card ul li {
+            padding: 0.25rem 0;
+            font-size: 0.92rem;
+            color: #2e4055;
+            display: flex;
+            align-items: baseline;
+            gap: 0.4rem;
+        }
+
+        .card ul li::before {
+            content: "▹";
+            color: #3b7aa3;
+            font-size: 0.8rem;
+        }
+
+        /* 强调色链接 — 自然的句子嵌入式 */
+        .inline-link {
+            color: #1a6b96;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border 0.15s, color 0.2s;
+            font-weight: 500;
+        }
+
+        .inline-link:hover {
+            color: #0e4b6e;
+            border-bottom: 1px solid #2f7ea8;
+        }
+
+        /* 段落区域 */
+        .text-section {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 2rem 2.4rem;
+            margin: 2.8rem 0 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid #e6eef7;
+        }
+
+        .text-section h2 {
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: #0e293e;
+            letter-spacing: 0.5px;
+        }
+
+        .text-section h2 small {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #5f7c94;
+            margin-left: 0.75rem;
+        }
+
+        .text-section p {
+            margin-bottom: 1rem;
+            color: #1f3347;
+        }
+
+        .text-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-mini {
+            background: #f9fcff;
+            border-radius: 20px;
+            padding: 1.6rem 1.8rem;
+            margin-top: 2.2rem;
+            border-left: 4px solid #2b6f96;
+        }
+
+        .faq-mini h4 {
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #0d2b41;
+        }
+
+        .faq-mini p {
+            font-size: 0.95rem;
+            color: #2b4057;
+        }
+
+        .faq-mini .q-item {
+            margin: 0.8rem 0;
+        }
+
+        .faq-mini .q-item strong {
+            color: #1a5a7a;
+        }
+
+        /* 适合人群卡片特别修饰 */
+        .audience-highlight {
+            background: #f2f8ff;
+            border-left: 4px solid #3d7ea7;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #b8cfe0, transparent);
+            margin: 2.2rem 0;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #6c839a;
+            padding: 2rem 0 0.5rem;
+            border-top: 1px solid #dbe4ed;
+            margin-top: 2rem;
+        }
+
+        .footer-note a {
+            color: #1a6b96;
+            text-decoration: none;
+            border-bottom: 1px dotted #9bb9d4;
+        }
+
+        .footer-note a:hover {
+            border-bottom: 1px solid #1a6b96;
+        }
+
+        @media (max-width: 500px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .text-section {
+                padding: 1.5rem 1.2rem;
+            }
+            .card {
+                padding: 1.4rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 -->
+    <section class="hero">
+        <h1>b体育 · 稳定访问</h1>
+        <p>信息卡片式页面，帮助更快了解平台用途、内容与适用场景。从日常使用的角度，整理一份清晰说明。</p>
+        <span class="tagline">页面说明 · 自然入口</span>
+    </section>
+
+    <div class="container">
+
+        <!-- 信息卡片网格: 主视觉 / 用途 / 适合人群 -->
+        <div class="card-grid">
+            <!-- 主视觉/平台印象 -->
+            <div class="card">
+                <h3>⚡ 平台速览 <span>印象</span></h3>
+                <p><span class="meta-dot"></span>整合体育资讯、赛事数据与互动内容，界面简洁，分类明确。</p>
+                <p><span class="meta-dot"></span>保持稳定的访问体验，适合通过浏览器直接浏览。</p>
+                <p style="margin-top:0.8rem; font-size:0.9rem; background:#f2f6fc; padding:0.4rem 0.8rem; border-radius:30px; display:inline-block;">面向广泛体育爱好者</p>
+            </div>
+
+            <!-- 用途卡片 -->
+            <div class="card">
+                <h3>📋 常见用途</h3>
+                <ul>
+                    <li>查看实时体育比分与赛程</li>
+                    <li>了解热门赛事深度分析</li>
+                    <li>浏览运动相关图文与短视频</li>
+                    <li>关注联赛排名与队伍动态</li>
+                </ul>
+                <p style="margin-top:1rem; font-size:0.88rem; color:#345b77;">从日常资讯到赛后复盘，覆盖多类需求。</p>
+            </div>
+
+            <!-- 适合人群卡片 (带highlight) -->
+            <div class="card audience-highlight">
+                <h3>🧑‍🤝‍🧑 适合人群</h3>
+                <ul>
+                    <li>日常关注足球、篮球等主流项目的爱好者</li>
+                    <li>喜欢赛前讨论、赛后数据对比的理性球迷</li>
+                    <li>寻找稳定体育内容入口的普通浏览者</li>
+                    <li>希望快速浏览整合信息而非零散搜索的用户</li>
+                </ul>
+                <p style="margin-top:0.4rem; font-size:0.85rem; color:#2b5b7a;">无论资深或轻度关注，均可找到合适内容。</p>
+            </div>
+        </div>
+
+        <!-- 自然链接段落 + 说明文字 -->
+        <div class="text-section">
+            <h2>从稳定入口开始 <small>页面说明</small></h2>
+            <p>
+                如果你正在寻找一个整合体育内容的地方，不妨试试直接使用 <a href="https://china-bsports.com" class="inline-link">b体育</a> 作为日常浏览的起点。
+                这里汇集了各类赛事信息与运动相关内容，页面结构清晰，没有繁杂的多层跳转。
+            </p>
+            <p>
+                不少用户习惯通过浏览器直接打开 <a href="https://china-bsports.com" class="inline-link">b体育</a> 查看当日赛程或热门讨论，
+                其稳定性和响应速度在日常使用中表现不错。尤其适合在移动端和桌面端之间无缝切换。
+            </p>
+            <p>
+                当然，任何平台都有其侧重。如果你更偏好深度长文或特定运动项目，也值得花几分钟逛逛，看看是否匹配自己的阅读习惯。
+                毕竟，一个顺手的信息入口，往往能让日常浏览轻松不少。
+            </p>
+
+            <!-- FAQ 摘要风格 -->
+            <div class="faq-mini">
+                <h4>❓ 常见疑问摘要</h4>
+                <div class="q-item"><strong>是否需注册才能浏览？</strong> 大部分资讯和赛程可直接查看，具体互动功能依平台规则而定。</div>
+                <div class="q-item"><strong>页面加载速度如何？</strong> 优化适中，常规网络下打开流畅，信息卡片式布局利于快速定位。</div>
+                <div class="q-item"><strong>适合只看篮球的用户吗？</strong> 涵盖多项运动，篮球内容属于重点板块之一，可自行筛选。</div>
+            </div>
+        </div>
+
+        <!-- 补充卡片：关于稳定与场景 -->
+        <div style="display: flex; flex-wrap: wrap; gap: 1.8rem; margin: 1.5rem 0;">
+            <div style="flex: 1; min-width: 200px; background: #ffffff; border-radius: 20px; padding: 1.6rem; box-shadow: 0 2px 8px rgba(0,0,0,0.02); border: 1px solid #e0ebf5;">
+                <h3 style="font-size:1.2rem; margin-bottom:0.5rem; color:#0f2e44;">🔁 日常场景</h3>
+                <p style="font-size:0.93rem;">早晨快速浏览前一日比分，午休看看转会传闻或赛后评分，晚间关注焦点战前瞻。信息更新节奏自然。</p>
+            </div>
+            <div style="flex: 1; min-width: 200px; background: #ffffff; border-radius: 20px; padding: 1.6rem; box-shadow: 0 2px 8px rgba(0,0,0,0.02); border: 1px solid #e0ebf5;">
+                <h3 style="font-size:1.2rem; margin-bottom:0.5rem; color:#0f2e44;">🛡️ 页面质感</h3>
+                <p style="font-size:0.93rem;">深色头图与浅色正文区形成对比，卡片式布局降低阅读压力。强调色用于链接，引导自然。</p>
+            </div>
+        </div>
+
+        <hr>
+
+        <p style="font-size:0.95rem; margin-bottom: 0.6rem;">
+            如果你正在寻找一个熟悉的起点，不妨把 <a href="https://china-bsports.com" class="inline-link">b体育</a> 加入书签。
+            每次打开都能看到最新的体育动态与稳定的页面结构，省去重复搜索的麻烦。
+        </p>
+        <p style="font-size:0.9rem; color:#3c5a75;">
+            本文从信息卡片角度整理介绍，内容力求平实，不含夸张表述。实际体验可能因个人网络与使用习惯而异。
+        </p>
+
+        <div class="footer-note">
+            <span>页面说明 · 非官方介绍 · </span>
+            <a href="https://china-bsports.com">b体育</a> · 仅供了解
+        </div>
+    </div>
+</body>
+</html>

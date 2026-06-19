@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://faceji-zz.github.io/china-bsports-com/sitemap.xml
